@@ -182,7 +182,8 @@ const CogModal = ({show, unshow}) => {
                         </div>
                     </div>
                 </Modal.Body>
-                <Modal.Footer>
+                <Modal.Footer
+                style ={{justifyContent: 'center'}}>
                     <button 
                         className='cog-modal__save-button'
                         onClick={() => handleSubmit()}>
