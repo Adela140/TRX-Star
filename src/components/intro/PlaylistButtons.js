@@ -1,7 +1,7 @@
 import { BsTrash } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { addPlaylist, updateLoaded } from '../../redux/slices/playlistSlice';
-import { setDifficulty, setDuration, setFocus, setMuscleGroups, setMuscles } from '../../redux/slices/selectSlice';
+import { setDifficulty, setDuration, setFocus, setMuscleGroupsOnLoad, setMuscles } from '../../redux/slices/selectSlice';
 import { store } from '../../redux/store';
 import Modal from 'react-bootstrap/Modal'
 
@@ -17,7 +17,7 @@ const PlaylistButtons = ({playlists, handleDelete}) => {
         store.dispatch(setFocus(playlist.select.focus));
         store.dispatch(setDuration(playlist.select.duration));
         playlist.select.muscleGroups?.map((group) =>{
-            store.dispatch(setMuscleGroups(group));
+            store.dispatch(setMuscleGroupsOnLoad(group));
         })
         playlist.select.muscles?.map((muscle) =>{
             store.dispatch(setMuscles(muscle));

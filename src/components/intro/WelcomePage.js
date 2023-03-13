@@ -17,6 +17,16 @@ const Welcome = ({indexedDB}) => {
     useEffect(() => {
         store.dispatch(initialiseAll());
         store.dispatch(initialisePlaylist([]));
+        const filtered = indexedDB.open("FilteredDatabase", 1);
+
+        // if filtered database already exists, clear object stores
+        filtered.onsuccess = function(event) {
+            const db = filtered.result;
+            const objectStoreList = db.objectStoreNames;
+            for (var i = 0; i < objectStoreList.length; i++) {
+                db.transaction(objectStoreList[i], "readwrite").objectStore(objectStoreList[i]).clear();
+            }
+        };
     })
     const navigate = useNavigate();
     const dispatch = useDispatch();

@@ -72,8 +72,10 @@ export const selectSlice = createSlice({
         state.muscles = state.muscles.filter((muscle) => (muscle!=action.payload));
       } else {
         state.muscles = [...state.muscles, action.payload];
-
       }
+    },
+    setMuscleGroupsOnLoad: (state, action) => {
+      state.muscleGroups = [...state.muscleGroups, action.payload]; // add bodyPart
     }
   },
 });
@@ -88,7 +90,8 @@ export const selectSlice = createSlice({
   setDuration, 
   setFocus, 
   setMuscleGroups, 
-  setMuscles
+  setMuscles,
+  setMuscleGroupsOnLoad
  } = selectSlice.actions;
 
 const selectPersistConfig = {

@@ -91,6 +91,7 @@ const Playlist = ({ indexedDB }) => {
 
         // if load from saved don't call algorithm
         if (!loaded) {
+            console.log("Inside filter")
             filterAll(indexedDB, selectedOptions)
             .then(function() {
                 createStructure(selectedOptions)
