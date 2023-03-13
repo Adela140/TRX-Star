@@ -8,7 +8,6 @@ import { store } from "../../redux/store"
 // filter using async await
 async function filterAll(indexedDB, userOptions) {
 
-    console.log("Selected:", JSON.stringify(userOptions));
     const complexity = diff_to_comp(userOptions["difficulty"]);
     const muscles = userOptions["muscles"];
     
@@ -91,7 +90,6 @@ const Playlist = ({ indexedDB }) => {
 
         // if load from saved don't call algorithm
         if (!loaded) {
-            console.log("Inside filter")
             filterAll(indexedDB, selectedOptions)
             .then(function() {
                 createStructure(selectedOptions)

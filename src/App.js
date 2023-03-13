@@ -26,12 +26,9 @@ const indexedDB =
 
 const createCollectionsInIndexedDB = () => {
 
-    console.log("In create collection")
     if (!indexedDB) {
         console.log("IndexedDB could not be found in this browser.");
     }
-
-    console.log(indexedDB);
 
     var versionChangeInProgress = false;
     var jsonSchemaString = JSON.stringify(data);
@@ -51,12 +48,10 @@ const createCollectionsInIndexedDB = () => {
         const db = request.result;
         if (event.oldVersion !== 0) {
             // user had an old version of ExerciseDatabase
-            console.log("deleting")
             const objectStoreList = db.objectStoreNames;
             for (var i = 0; i < objectStoreList.length; i++) {
                 // delete all object stores
                 db.deleteObjectStore(objectStoreList[i]);
-                console.log("Object stores remaining", db.objectStoreNames)
             }
         }
         for (i = 0; i < schema.tables.length; i++) {

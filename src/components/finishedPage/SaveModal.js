@@ -49,7 +49,6 @@ const SaveModal = ({show, unshow, indexedDB}) => {
         } else if (event.target.error.message.includes("Key already exists")) {
 
             // IndexedDB throws error if playlist name already exists 
-            console.log("Duplicate key error.");
 
             // Show error message
             document.getElementById("msg").style.opacity = "1";

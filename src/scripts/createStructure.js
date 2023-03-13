@@ -82,7 +82,6 @@ function generateHIT(split, totalTime, difficulty)
     // append cooldown
     HIITPlaylist.push(cooldownDict);
 
-    console.log("HIIT", HIITPlaylist)
 
     return HIITPlaylist; 
 

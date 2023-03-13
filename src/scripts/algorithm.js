@@ -204,7 +204,6 @@ export async function getClip(indexedDB, type, time, intensity, excluded_exercis
             // While loop prevents duplicate exercises being chosen
             while (exercise_clips.length === 0) {
 
-                console.log("Target intensity", intensity);
                 var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "FilteredDatabase", 1);
                 var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
                 
@@ -242,7 +241,6 @@ export async function getClip(indexedDB, type, time, intensity, excluded_exercis
             // If valid exercise not chosen after 20 loops, expand search to ExerciseDB
             if(exercise_clips.length === 0) {
                 
-                console.log("Expanding search")
                 var valid_exercises = await filterDatabase("exercises", "intensity", intensity, indexedDB, "ExerciseDatabase", 1);
                 var chosen_exercise = valid_exercises[RandInt(0, valid_exercises.length)]; 
 

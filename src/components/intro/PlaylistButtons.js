@@ -11,7 +11,6 @@ const PlaylistButtons = ({playlists, handleDelete}) => {
 
     // On load, sets all redux states
     const clickHandler = (playlist) => {
-        console.log("Playlist data", playlist.playlist);
         store.dispatch(addPlaylist(playlist.playlist));
         store.dispatch(setDifficulty(playlist.select.difficulty));
         store.dispatch(setFocus(playlist.select.focus));

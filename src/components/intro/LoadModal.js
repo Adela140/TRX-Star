@@ -12,7 +12,6 @@ function deleteSavePlaylist(name, indexedDB) {
                 .objectStore("playlists")
                 .delete(name);
             request.onsuccess = (e) => {
-                console.log("Delete successful.")
                 resolve(e);
             }
         }
@@ -52,7 +51,6 @@ const LoadModal = ({show, unshow, indexedDB, setButtonDisabled}) => {
     
     // Handler for delete button
     const handleDelete = (playlist) => {
-        console.log("Delete");
         deleteSavePlaylist(playlist.name, indexedDB)
     }
 

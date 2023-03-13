@@ -69,7 +69,6 @@ const YouTubePage = ({nextVideo, prevVideo, exerciseData}) => {
   }
 
   const handleRewind = async () => {
-    console.log(playerRef.current.internalPlayer);
     const currentTime = await playerRef.current.internalPlayer.getCurrentTime(); 
     // ADD logic such that we cannot go beyond the bounds of our current video
     playerRef.current.internalPlayer.seekTo(Math.max(0, currentTime - 10), true); 
