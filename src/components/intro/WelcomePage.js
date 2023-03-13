@@ -10,6 +10,7 @@ import { initialisePlaylist } from "../../redux/slices/playlistSlice";
 import LoadModal from "./LoadModal";
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { RiInformationFill } from "react-icons/ri";
+import data from '../../data/ExerciseDatabase5.json'
 
 const Welcome = ({indexedDB}) => {
 
@@ -17,6 +18,11 @@ const Welcome = ({indexedDB}) => {
     useEffect(() => {
         store.dispatch(initialiseAll());
         store.dispatch(initialisePlaylist([]));
+
+        var jsonSchemaString = JSON.stringify(data);
+        var schema = JSON.parse(jsonSchemaString);
+
+        // create filtered database at start-up
         const filtered = indexedDB.open("FilteredDatabase", 1);
 
         // if filtered database already exists, clear object stores
@@ -27,6 +33,25 @@ const Welcome = ({indexedDB}) => {
                 db.transaction(objectStoreList[i], "readwrite").objectStore(objectStoreList[i]).clear();
             }
         };
+
+        filtered.onerror = function (event) {
+            console.error("An error occurred with IndexedDB");
+            console.error(event.target.error);
+        };
+
+        filtered.onupgradeneeded = function(event) {
+            const db = filtered.result;
+            // FilteredDatabase always has version 1, only upgrade if did not have Database
+            for (var i = 0; i < schema.tables.length; i++) {
+                // Create the object store and add data
+                var objectStore = db.createObjectStore(schema.tables[i].name, { keyPath: schema.tables[i].keyPath });
+                // Define any indexes
+                for (var j = 0; j < schema.tables[i].indexes.length; j++) {
+                    objectStore.createIndex(schema.tables[i].indexes[j].name, schema.tables[i].indexes[j].keyPath, { unique: schema.tables[i].indexes[j].unique, multiEntry: schema.tables[i].indexes[j].multientry });
+                }
+            }        
+        };
+
     })
     const navigate = useNavigate();
     const dispatch = useDispatch();
