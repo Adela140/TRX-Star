@@ -2,8 +2,12 @@
 
 @media (hover: hover) {
 
-    .select-button {
+    .select-button:hover {
         background-color: #eed600;
+    }
+
+    .nav-button:hover {
+        color: darkgray;
     }
     
 }
@@ -27,10 +31,6 @@
         margin: 0px;
         font-size: 18px;
         @include font
-    }
-
-    &:hover {
-        background-color: #eed600;
     }
 
     &__icon {

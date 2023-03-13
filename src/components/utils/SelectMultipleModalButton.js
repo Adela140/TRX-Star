@@ -54,11 +54,11 @@ const SelectMultipleModalButton = ({type, option}) => {
         <button 
             className={`muscle-modal-button ${selected ? 'selected' : 'unselected'}`}
             onClick={() => clickHandler(type)}>
-                <div className = "multi-modal-button__tick"></div>
+                <div className = "muscle-modal-button__tick"></div>
                 <p>
                     {option}
                 </p>
-                <TiTick size={20} className = "multi-modal-button__tick" style = {{opacity: selected ?  '1': '0'}}/>
+                <TiTick size={20} className = "muscle-modal-button__tick" style = {{opacity: selected ?  '1': '0'}}/>
         </button>
     )
 }
