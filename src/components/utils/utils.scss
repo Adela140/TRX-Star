@@ -27,9 +27,14 @@
     border: 2px solid black;
     border-radius: 8px;
 
-    &:hover {
-        background-color: #eed600;
+    // &:hover {
+    //     background-color: #eed600;
+    // }
+
+    &:active {
+        background-color: #FFE600;
     }
+    
 
     > p {
         margin: 0px;
